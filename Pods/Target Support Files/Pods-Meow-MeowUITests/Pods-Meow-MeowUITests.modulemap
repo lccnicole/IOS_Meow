@@ -1,0 +1,6 @@
+framework module Pods_Meow_MeowUITests {
+  umbrella header "Pods-Meow-MeowUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

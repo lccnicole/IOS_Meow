@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import UIKit
+@testable import Meow
 
 class MeowUITests: XCTestCase {
 
@@ -22,13 +24,38 @@ class MeowUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testGetCatUI() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let imageView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        XCTAssertTrue(imageView.exists)
+        XCTAssertTrue(app.buttons["GET ME A  NEW CAT"].exists)
+        XCTAssertTrue(app.buttons["ADOPT THIS CAT"].exists)
+    }
+    
+    func testAdopterUI() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let tabBarsQuery = XCUIApplication().tabBars
+        tabBarsQuery.buttons["Adopted"].tap()
+        XCTAssertTrue(app.collectionViews.children(matching: .cell).element(boundBy: 4).children(matching: .other).element.exists)
+        
+        XCTAssertFalse(app.buttons["GET ME A  NEW CAT"].exists)
+        XCTAssertFalse(app.buttons["ADOPT THIS CAT"].exists)
+    }
+    
+    func testAdvancedUI() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let tabBarsQuery = XCUIApplication().tabBars
+        tabBarsQuery.buttons["Advanced"].tap()
+        let imageView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        XCTAssertTrue(imageView.exists)
+        XCTAssertTrue(app.buttons["GET ME A  NEW CAT"].exists)
+        XCTAssertTrue(app.buttons["ADOPT THIS CAT"].exists)
+        let textField = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 2).children(matching: .textField).element
+        XCTAssertTrue(textField.exists)
+        XCTAssertTrue(app.staticTexts["Category"].exists)
     }
 
     func testLaunchPerformance() throws {
@@ -39,4 +66,6 @@ class MeowUITests: XCTestCase {
             }
         }
     }
+    
+    
 }
