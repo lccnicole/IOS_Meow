@@ -9,6 +9,8 @@ d.     Unit Testing cover all ViewModels—view Models design to be testable.
 **2\.     Code Efficiency, Code Readability, Code Consistency**  
 In the source provided, a similar code is duplicated in many places. It is not effective when changing code is require and cause inconsistency when code changed. Codes are messy, not reusable.  
 ![][image1]  
+![image](https://github.com/user-attachments/assets/c1b490d3-8766-49ee-9599-ac6b69b31f60)
+
 ViewModel
 
 * FilterViewModel \- the Logic for the advanced math question   
